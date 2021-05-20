@@ -33,6 +33,31 @@ class UI{
         `;
     }
     
+    //Shows user repo information
+    showRepos(userReposInfo){
+        console.log(userReposInfo);
+        const reposSection = document.getElementById('repos');
+        if(reposSection){
+            let repoInfoOutput = "";
+            userReposInfo.forEach(repoInfo => {
+                repoInfoOutput += `
+                <div class="card card-body mb-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="${repoInfo.html_url}" target="-blank">${repoInfo.name}</a>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="badge bg-danger">Stars: ${repoInfo.stargazers_count}</span>
+                            <span class="badge bg-success">Watchers: ${repoInfo.watchers_count}</span>
+                            <span class="badge bg-warning">forks_count: ${repoInfo.forks_count}</span>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            reposSection.innerHTML = repoInfoOutput;
+        }
+    }
+    
     //shows alert if the user does not exist
     showAlert(message,styleClass) {
         //clears any remaining alert

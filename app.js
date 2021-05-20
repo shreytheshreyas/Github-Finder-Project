@@ -19,6 +19,7 @@ searchInput.addEventListener('keyup',(e) => {
                 //console.log(userData.profile);
                 uiObj.removeAlert();
                 uiObj.showProfile(userData.profile);
+                uiObj.showRepos(userData.repos);
 
             }
         });
