@@ -1,5 +1,8 @@
+
 const myGitHubObj = new GitHub();
+const uiObj = new UI();
 const searchInput = document.getElementById('searchUser');
+
 
 searchInput.addEventListener('keyup',(e) => {
     //get input text
@@ -12,11 +15,13 @@ searchInput.addEventListener('keyup',(e) => {
                 //dont display anything in DOM
             } else {
                 //display user profile data on the DOM
-                console.log(userData.profile);
+                //console.log(userData.profile);
+                uiObj.showProfile(userData.profile);
+
             }
         });
     } else {
         //The scemario where there is no input
-        console.log("Please Enter a username");
+        uiObj.displayNothing();
     }
 });
