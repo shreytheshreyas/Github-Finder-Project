@@ -2,7 +2,7 @@ class UI{
     constructor(){
         this.profile = document.getElementById('result-placeholder');
     }
-
+    //Shows user profile corressponding to input
     showProfile(userInfo){
         console.log(userInfo);
         this.profile.innerHTML = `
@@ -32,7 +32,35 @@ class UI{
             </div>
         `;
     }
+    
+    //shows alert if the user does not exist
+    showAlert(message,styleClass) {
+        //clears any remaining alert
+        this.removeAlert();
+        const div = document.createElement('div');
+        div.className = styleClass;
 
+        div.appendChild(document.createTextNode(message));
+
+        const container = document.querySelector('.searchContainer');
+        const card = document.querySelector('.card');
+
+        container.insertBefore(div,card);
+
+        //timeout after 3 seconds
+
+        setTimeout(() => this.removeAlert(),3000);
+    }
+
+    removeAlert(){
+        const currentAlert = document.querySelector('.alert');
+        
+        if(currentAlert) {
+            currentAlert.remove();
+        }
+    }
+
+    //function to handle the scenario when there is no input
     displayNothing() {
         this.profile.innerHTML = ``;
     }
